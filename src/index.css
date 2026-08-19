@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-brand-green-deep: #0B5D2A;
+  --color-brand-green-inst: #073B1E;
+  --color-brand-green-vibrant: #59C62A;
+  --color-brand-green-lime: #76FF03;
+  --color-brand-yellow: #FFD700;
+  --color-brand-black: #111111;
+  --color-brand-gray: #F8FAF8;
+  --color-brand-white: #FFFFFF;
+  
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 2rem;
+
+  --shadow-brand: 0 10px 40px -10px rgba(11, 93, 42, 0.1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-brand-white);
+    color: var(--color-brand-black);
+    @apply antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: var(--font-display);
+    @apply font-bold tracking-tight;
+  }
+}
+
+.glass {
+  @apply bg-white/90 backdrop-blur-md border-b border-gray-100;
+}
+
+.section-padding {
+  @apply py-20 md:py-32 px-5;
+}
+
+.green-halo {
+  position: relative;
+}
+
+.green-halo::after {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(89, 198, 42, 0.15) 0%, transparent 70%);
+  z-index: -1;
+  pointer-events: none;
+}
+

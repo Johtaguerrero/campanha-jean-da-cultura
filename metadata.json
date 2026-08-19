@@ -1,0 +1,6 @@
+{
+  "name": "Jean da Cultura | Deputado Distrital 43222",
+  "description": "Portal oficial de Jean da Cultura. Conheça sua trajetória, temas de atuação, propostas, informações e canais oficiais para as Eleições 2026.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
