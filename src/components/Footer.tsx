@@ -28,7 +28,7 @@ export function Footer() {
           <div>
             <h4 className="font-display uppercase text-brand-green-deep text-xs tracking-[0.3em] mb-8 font-black">Mobilização</h4>
             <ul className="space-y-4 text-sm font-bold uppercase tracking-widest">
-              <li><a href="https://wa.me/5561995210111" className="text-brand-green-deep hover:text-brand-green-vibrant transition-colors flex items-center gap-2">Grupo Oficial <ExternalLink className="w-3 h-3" /></a></li>
+              <li><a href="https://wa.me/5561995210111?text=Ol%C3%A1%2C%20Jean%20da%20Cultura%21%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20fazer%20uma%20pergunta%20sobre%20sua%20atua%C3%A7%C3%A3o%20e%20suas%20ideias%20para%20o%20Distrito%20Federal.%20Podemos%20conversar%3F" className="text-brand-green-deep hover:text-brand-green-vibrant transition-colors flex items-center gap-2">Grupo Oficial <ExternalLink className="w-3 h-3" /></a></li>
               <li><a href="https://instagram.com/jeandacultura" className="text-gray-400 hover:text-brand-green-deep transition-colors">Instagram</a></li>
               <li><a href="https://facebook.com/jeancarlossousaa" className="text-gray-400 hover:text-brand-green-deep transition-colors">Facebook</a></li>
               <li><a href="#privacidade" className="text-gray-400 hover:text-brand-green-deep transition-colors flex items-center gap-2">Privacidade <Shield className="w-3 h-3" /></a></li>

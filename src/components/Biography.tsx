@@ -150,7 +150,7 @@ export function Biography() {
               </p>
               <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
                 <a 
-                  href="https://wa.me/5561995210111" 
+                  href="https://wa.me/5561995210111?text=Ol%C3%A1%2C%20Jean%20da%20Cultura%21%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20fazer%20uma%20pergunta%20sobre%20sua%20atua%C3%A7%C3%A3o%20e%20suas%20ideias%20para%20o%20Distrito%20Federal.%20Podemos%20conversar%3F" 
                   className="bg-brand-green-vibrant text-brand-green-deep px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest flex items-center gap-3 hover:scale-105 transition-all shadow-xl"
                 >
                   <MessageCircle className="w-6 h-6 fill-current" />
