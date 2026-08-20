@@ -115,11 +115,18 @@ export function Hero() {
 
       {/* Campaign Footer Bar */}
       <div className="w-full bg-brand-black/50 backdrop-blur-md border-t border-white/5 py-6 px-5 mt-auto">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] md:text-xs text-white/40 font-bold uppercase tracking-widest">
-          <div className="flex items-center gap-6">
-            <span className="text-brand-green-lime">CNPJ: 68.456.103/0001-02</span>
-            <div className="w-px h-4 bg-white/10" />
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-6 text-[10px] md:text-xs text-white/40 font-bold uppercase tracking-widest">
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-3 gap-y-2 text-center lg:text-left">
+            <span className="text-white/60">Federação Brasil Esperança</span>
+            <span className="text-white/30">(PT - PV e PCdoB)</span>
+            <div className="w-px h-4 bg-white/10 hidden md:block" />
+            <span className="text-brand-green-lime">Eleição 2026</span>
+            <div className="w-px h-4 bg-white/10 hidden md:block" />
             <span>Jean Carlos Sousa - Deputado Distrital 43222</span>
+            <div className="w-px h-4 bg-white/10 hidden md:block" />
+            <span>CNPJ: 68.456.103/0001-02</span>
+            <div className="w-px h-4 bg-white/10 hidden md:block" />
+            <span>Partido Verde</span>
           </div>
           <div className="flex items-center gap-3">
             <div className="w-3 h-3 rounded-full bg-brand-green-lime shadow-[0_0_15px_rgba(118,255,3,0.5)]" />

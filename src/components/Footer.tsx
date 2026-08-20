@@ -60,7 +60,11 @@ export function Footer() {
         <div className="pt-12 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex flex-col gap-2 text-center md:text-left">
             <span className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em]">Informativo Eleitoral</span>
-            <p className="text-xs text-gray-400 max-w-sm font-medium">
+            <p className="text-xs text-gray-400 max-w-md font-medium leading-relaxed">
+              Federação Brasil Esperança (PT - PV e PCdoB) - Eleição 2026. Jean Carlos Sousa - Deputado Distrital 43222.
+              CNPJ: 68.456.103/0001-02 - Partido Verde.
+            </p>
+            <p className="text-[10px] text-gray-400/70 max-w-md font-medium">
               Propaganda Eleitoral Antecipada - Informativo Institucional em conformidade com as normas do TSE.
             </p>
           </div>
