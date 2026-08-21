@@ -74,7 +74,7 @@ export function Participation() {
         
         <div className="flex flex-col sm:flex-row justify-center gap-6">
           <a 
-            href="https://wa.me/5561995210111?text=Ol%C3%A1%2C%20Jean%20da%20Cultura%21%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20fazer%20uma%20pergunta%20sobre%20sua%20atua%C3%A7%C3%A3o%20e%20suas%20ideias%20para%20o%20Distrito%20Federal.%20Podemos%20conversar%3F" 
+            href="https://wa.me/5561995845093?text=Ol%C3%A1%2C%20Jean%20da%20Cultura%21%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20fazer%20uma%20pergunta%20sobre%20sua%20atua%C3%A7%C3%A3o%20e%20suas%20ideias%20para%20o%20Distrito%20Federal.%20Podemos%20conversar%3F" 
             className="bg-brand-green-deep text-white px-12 py-6 rounded-[2rem] font-bold text-base uppercase tracking-widest shadow-brand hover:scale-105 transition-all"
           >
             Acessar Grupo Oficial
