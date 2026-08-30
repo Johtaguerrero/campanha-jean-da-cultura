@@ -67,7 +67,6 @@ export function FlashbackSection() {
                 className="group flex items-start gap-5 p-6 bg-black/40 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/[0.08] hover:border-brand-green-lime/30 transition-all"
               >
                 <div className="flex flex-col items-center shrink-0">
-                  <span className="text-[10px] font-mono text-brand-green-lime/60 mb-2">{String(idx + 1).padStart(2, '0')}</span>
                   <div className="w-11 h-11 rounded-xl bg-brand-green-lime/10 border border-brand-green-lime/20 flex items-center justify-center text-brand-green-lime group-hover:scale-110 transition-transform">
                     <Icon className="w-5 h-5" />
                   </div>
@@ -83,6 +82,7 @@ export function FlashbackSection() {
 
         {/* Tracklist number row */}
         <div className="mt-16 flex items-center justify-center gap-4 overflow-hidden" aria-hidden="true">
+          {/* Decorative separator lines */}
           {Array.from({ length: 8 }).map((_, i) => (
             <motion.span
               key={i}
@@ -92,7 +92,7 @@ export function FlashbackSection() {
               transition={{ delay: 0.5 + i * 0.05 }}
               className="text-brand-green-lime/20 font-display font-black text-3xl md:text-5xl"
             >
-              {String(i + 1).padStart(2, '0')}
+              ─
             </motion.span>
           ))}
         </div>
