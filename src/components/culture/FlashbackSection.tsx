@@ -1,4 +1,5 @@
-import { motion } from 'motion/react';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'motion/react';
 import { Disc3, Users2, PartyPopper, Heart, Sparkles, MapPin } from 'lucide-react';
 
 const blocks = [
@@ -11,12 +12,29 @@ const blocks = [
 ];
 
 export function FlashbackSection() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  });
+
+  const imageOpacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 0.25, 0.25, 0]);
+  const imageScale = useTransform(scrollYProgress, [0, 1], [1.05, 1.15]);
+
   return (
-    <section id="flashback" className="relative py-24 md:py-32 px-5 bg-brand-black overflow-hidden">
-      {/* vinyl grooves decor */}
-      <div className="absolute -right-32 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full border border-white/5 pointer-events-none" aria-hidden="true" />
-      <div className="absolute -right-24 top-1/2 -translate-y-1/2 w-64 h-64 rounded-full border border-white/5 pointer-events-none" aria-hidden="true" />
-      <div className="absolute -right-16 top-1/2 -translate-y-1/2 w-32 h-32 rounded-full border border-brand-green-lime/10 pointer-events-none" aria-hidden="true" />
+    <section ref={sectionRef} id="flashback" className="relative py-24 md:py-32 px-5 bg-brand-black overflow-hidden">
+      {/* Background image - passinho Ceilândia */}
+      <div className="absolute inset-0 z-0">
+        <motion.img
+          src="/passinho-ceilandia.jpg"
+          alt=""
+          aria-hidden="true"
+          className="w-full h-full object-cover origin-center"
+          style={{ opacity: imageOpacity, scale: imageScale }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-black via-brand-black/60 to-brand-black" />
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-black/80 via-transparent to-brand-black/70" />
+      </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
@@ -46,11 +64,11 @@ export function FlashbackSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.07 }}
-                className="group flex items-start gap-5 p-6 bg-white/[0.03] border border-white/10 rounded-2xl hover:bg-white/[0.06] hover:border-brand-green-lime/30 transition-all"
+                className="group flex items-start gap-5 p-6 bg-black/40 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/[0.08] hover:border-brand-green-lime/30 transition-all"
               >
                 <div className="flex flex-col items-center shrink-0">
                   <span className="text-[10px] font-mono text-brand-green-lime/60 mb-2">{String(idx + 1).padStart(2, '0')}</span>
-                  <div className="w-11 h-11 rounded-full bg-brand-green-inst/60 border border-white/10 flex items-center justify-center text-brand-green-lime group-hover:scale-110 transition-transform">
+                  <div className="w-11 h-11 rounded-xl bg-brand-green-lime/10 border border-brand-green-lime/20 flex items-center justify-center text-brand-green-lime group-hover:scale-110 transition-transform">
                     <Icon className="w-5 h-5" />
                   </div>
                 </div>
@@ -63,15 +81,19 @@ export function FlashbackSection() {
           })}
         </div>
 
-        {/* vinyl abstract disc row */}
-        <div className="mt-16 flex items-center gap-3 overflow-hidden" aria-hidden="true">
-          {Array.from({ length: 12 }).map((_, i) => (
-            <div
+        {/* Tracklist number row */}
+        <div className="mt-16 flex items-center justify-center gap-4 overflow-hidden" aria-hidden="true">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <motion.span
               key={i}
-              className="shrink-0 w-16 h-16 rounded-full bg-brand-green-inst/40 border border-white/10 flex items-center justify-center"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 + i * 0.05 }}
+              className="text-brand-green-lime/20 font-display font-black text-3xl md:text-5xl"
             >
-              <div className="w-5 h-5 rounded-full bg-brand-green-deep/60 border border-brand-green-lime/20" />
-            </div>
+              {String(i + 1).padStart(2, '0')}
+            </motion.span>
           ))}
         </div>
       </div>
