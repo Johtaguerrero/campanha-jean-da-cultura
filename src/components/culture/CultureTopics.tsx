@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { useState, useRef } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
 import { Plus } from 'lucide-react';
 
 const topics = [
@@ -43,9 +43,30 @@ const topics = [
 
 export function CultureTopics() {
   const [open, setOpen] = useState<number | null>(0);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  });
+
+  const imageOpacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 0.2, 0.2, 0]);
+  const imageScale = useTransform(scrollYProgress, [0, 1], [1.05, 1.12]);
 
   return (
-    <section className="relative py-24 md:py-32 px-5 bg-brand-black overflow-hidden">
+    <section ref={sectionRef} className="relative py-24 md:py-32 px-5 bg-brand-black overflow-hidden">
+      {/* Background image */}
+      <div className="absolute inset-0 z-0">
+        <motion.img
+          src="/homem-boné.jpg"
+          alt=""
+          aria-hidden="true"
+          className="w-full h-full object-cover object-bottom origin-bottom"
+          style={{ opacity: imageOpacity, scale: imageScale }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-black via-brand-black/70 to-brand-black" />
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-black/80 via-transparent to-brand-black/70" />
+      </div>
+
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -72,7 +93,7 @@ export function CultureTopics() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.05 }}
-                className="border border-white/10 rounded-[2rem] bg-white/[0.03] overflow-hidden hover:border-white/20 transition-colors"
+                className="border border-white/10 rounded-[2rem] bg-black/40 backdrop-blur-sm overflow-hidden hover:border-white/20 transition-colors"
               >
                 <button
                   onClick={() => setOpen(isOpen ? null : idx)}
