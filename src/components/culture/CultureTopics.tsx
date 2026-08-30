@@ -63,8 +63,8 @@ export function CultureTopics() {
           className="w-full h-full object-cover object-bottom origin-bottom"
           style={{ opacity: imageOpacity, scale: imageScale }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-black via-brand-black/70 to-brand-black" />
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-black/80 via-transparent to-brand-black/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-black via-brand-black/40 to-brand-black" />
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-black/50 via-transparent to-brand-black/40" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
