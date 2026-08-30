@@ -1,114 +1,215 @@
 import { motion } from 'motion/react';
 import { MessageCircle, ArrowRight, ChevronDown } from 'lucide-react';
 import { WHATSAPP_CULTURA_URL } from '../../config/contact';
-import { CANDIDATE } from '../../config/site';
 
 export function CultureHero() {
   return (
-    <section id="inicio" className="relative min-h-[100svh] flex flex-col pt-32 md:pt-36 overflow-hidden bg-brand-black">
-      {/* Decorative Elements */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-brand-green-inst/30 -skew-x-12 translate-x-1/4 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-green-deep/40 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-brand-green-lime/10 rounded-full blur-[100px] pointer-events-none animate-pulse" />
+    <section id="inicio" className="relative min-h-[100svh] flex flex-col overflow-hidden bg-brand-black">
+      {/* Full-screen Jean background image - faded */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="/jean.jpg"
+          alt=""
+          aria-hidden="true"
+          className="w-full h-full object-cover object-top opacity-20 md:opacity-15 scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-black via-brand-black/70 to-brand-black" />
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-black/90 via-transparent to-brand-black/60" />
+      </div>
 
-      {/* Waveform decorative */}
-      <div className="absolute bottom-32 left-0 right-0 flex items-end justify-center gap-1 opacity-20 pointer-events-none" aria-hidden="true">
-        {Array.from({ length: 60 }).map((_, i) => (
-          <div
+      {/* Animated waveform background - music visual */}
+      <div className="absolute bottom-0 left-0 right-0 h-40 flex items-end justify-center gap-[3px] px-4 opacity-15 pointer-events-none" aria-hidden="true">
+        {Array.from({ length: 80 }).map((_, i) => (
+          <motion.div
             key={i}
-            className="w-1 bg-brand-green-lime rounded-full"
-            style={{ height: `${8 + Math.abs(Math.sin(i * 0.7)) * 48}px` }}
+            className="w-[3px] bg-brand-green-lime rounded-full origin-bottom"
+            initial={{ scaleY: 0 }}
+            animate={{ scaleY: [0, 1, 0.6, 1, 0.4] }}
+            transition={{
+              duration: 2 + Math.random() * 1.5,
+              repeat: Infinity,
+              delay: i * 0.03,
+              ease: 'easeInOut',
+            }}
+            style={{ height: `${20 + Math.abs(Math.sin(i * 0.5)) * 100}px` }}
           />
         ))}
       </div>
 
-      <div className="relative z-10 flex-1 flex flex-col justify-center max-w-7xl mx-auto w-full px-5 py-10">
+      {/* Floating vinyl grooves - desktop only */}
+      <div className="hidden md:block absolute top-1/3 -right-20 w-80 h-80 rounded-full border border-white/5 pointer-events-none" aria-hidden="true" />
+      <div className="hidden md:block absolute top-1/3 -right-10 w-60 h-60 rounded-full border border-white/5 pointer-events-none" />
+      <div className="hidden md:block absolute top-1/3 right-0 w-40 h-40 rounded-full border border-brand-green-lime/10 pointer-events-none" />
+
+      {/* Content overlay */}
+      <div className="relative z-10 flex-1 flex flex-col justify-center max-w-7xl mx-auto w-full px-5 py-24 md:py-32">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+
           {/* Left Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="lg:col-span-7"
-          >
+          <div className="lg:col-span-7 space-y-6">
+
+            {/* Eyebrow */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 bg-white/5 border border-white/15 text-brand-green-lime font-display text-xs md:text-sm font-bold px-5 py-2 rounded-full mb-8 uppercase tracking-[0.25em]"
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="inline-flex items-center gap-2 bg-brand-green-lime/10 border border-brand-green-lime/20 text-brand-green-lime font-display text-[10px] md:text-xs font-bold px-5 py-2.5 rounded-full uppercase tracking-[0.3em]"
             >
+              <span className="w-2 h-2 bg-brand-green-lime rounded-full animate-pulse" />
               Cultura • Música • Comunidade
             </motion.div>
 
-            <h1 className="text-[clamp(44px,7vw,96px)] leading-[0.9] text-white uppercase font-display font-black tracking-tighter drop-shadow-2xl mb-8">
-              Uma vida <br />
-              movida pela <br />
-              <span className="text-brand-green-lime">Cultura.</span>
-            </h1>
-
-            <p className="text-white/70 text-lg md:text-xl max-w-xl mb-10 leading-relaxed font-medium">
-              A música faz parte da trajetória de Jean desde a juventude. Do DJ à produção cultural, sua história atravessa
-              eventos, cultura urbana e ações comunitárias no Distrito Federal.
-            </p>
-
-            <div className="flex flex-wrap items-center gap-4 mb-12">
-              <div className="flex flex-col gap-1 border-l-4 border-brand-green-lime pl-4">
-                <span className="text-white/60 text-xs font-bold uppercase tracking-widest">Jean da Cultura</span>
-                <span className="text-white text-xl md:text-2xl font-display font-bold uppercase">Deputado Distrital</span>
-                <span className="text-brand-green-lime text-4xl md:text-5xl font-display font-black leading-none">43222</span>
-              </div>
+            {/* Headline - staggered words */}
+            <div>
+              <motion.h1
+                initial={{ opacity: 0, x: -60 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                className="text-[clamp(42px,8vw,100px)] leading-[0.88] text-white uppercase font-display font-black tracking-tighter"
+              >
+                Uma vida
+              </motion.h1>
+              <motion.h1
+                initial={{ opacity: 0, x: -60 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                className="text-[clamp(42px,8vw,100px)] leading-[0.88] text-white uppercase font-display font-black tracking-tighter"
+              >
+                movida pela
+              </motion.h1>
+              <motion.h1
+                initial={{ opacity: 0, x: -60, scale: 0.9 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                className="text-[clamp(52px,10vw,120px)] leading-[0.85] text-brand-green-lime uppercase font-display font-black tracking-tighter drop-shadow-[0_0_60px_rgba(118,255,3,0.3)]"
+              >
+                Cultura.
+              </motion.h1>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-5">
-              <a
+            {/* Subtitle */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="text-white/60 text-base md:text-lg max-w-xl leading-relaxed font-medium"
+            >
+              A música faz parte da trajetória de Jean desde a juventude. Do DJ à produção cultural, sua história
+              atravessa eventos, cultura urbana e ações comunitárias no Distrito Federal.
+            </motion.p>
+
+            {/* Candidate info - appears early */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.0 }}
+              className="flex flex-wrap items-center gap-6"
+            >
+              <div className="flex flex-col gap-0.5 border-l-4 border-brand-green-lime pl-4">
+                <span className="text-white/50 text-[10px] font-bold uppercase tracking-[0.25em]">Jean da Cultura</span>
+                <span className="text-white text-lg md:text-xl font-display font-bold uppercase">Deputado Distrital</span>
+              </div>
+              <motion.span
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 1.2, type: 'spring', stiffness: 200 }}
+                className="text-brand-green-lime text-6xl md:text-7xl font-display font-black leading-none drop-shadow-[0_0_40px_rgba(118,255,3,0.4)]"
+              >
+                43222
+              </motion.span>
+            </motion.div>
+
+            {/* CTA buttons - staggered entrance */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.4 }}
+              className="flex flex-col sm:flex-row gap-4 pt-4"
+            >
+              <motion.a
                 href={WHATSAPP_CULTURA_URL}
                 target="_blank"
                 rel="noopener"
-                className="inline-flex items-center justify-center gap-3 bg-brand-green-lime text-brand-green-deep px-8 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:scale-105 transition-all shadow-[0_20px_50px_rgba(118,255,3,0.3)] group"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 1.5 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.97 }}
+                className="relative inline-flex items-center justify-center gap-3 bg-brand-green-lime text-brand-green-deep px-8 py-5 rounded-2xl font-black text-sm uppercase tracking-widest shadow-[0_0_40px_rgba(118,255,3,0.3)] group overflow-hidden"
               >
-                <MessageCircle className="w-5 h-5 fill-current" />
-                Participar pelo WhatsApp
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
-              <a
+                <span className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                <MessageCircle className="w-5 h-5 fill-current relative z-10" />
+                <span className="relative z-10">Participar pelo WhatsApp</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform relative z-10" />
+              </motion.a>
+              <motion.a
                 href="#trajetoria"
-                className="inline-flex items-center justify-center gap-3 bg-transparent border-2 border-white/25 text-white px-8 py-5 rounded-2xl font-bold text-sm uppercase tracking-widest hover:bg-white hover:text-brand-black transition-all"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 1.6 }}
+                whileHover={{ scale: 1.03 }}
+                className="inline-flex items-center justify-center gap-3 bg-transparent border-2 border-white/20 text-white/80 px-8 py-5 rounded-2xl font-bold text-sm uppercase tracking-widest hover:bg-white/5 hover:border-white/30 hover:text-white transition-all"
               >
                 Conhecer a trajetória
-              </a>
-            </div>
-          </motion.div>
+              </motion.a>
+            </motion.div>
+          </div>
 
-          {/* Right Editorial Panel */}
+          {/* Right Panel - Editorial visual */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.3 }}
+            initial={{ opacity: 0, scale: 0.85, rotate: 2 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ duration: 1.2, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="lg:col-span-5 relative"
           >
-            <div className="relative rounded-[2.5rem] overflow-hidden border border-white/10 bg-brand-green-inst/40 p-8 md:p-10">
+            <div className="relative rounded-[2rem] overflow-hidden border border-white/10 bg-brand-green-inst/30 backdrop-blur-sm p-8 md:p-10">
               {/* Grid editorial decorative */}
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(118,255,3,0.08)_1px,transparent_0)] bg-[length:24px_24px] pointer-events-none" aria-hidden="true" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(118,255,3,0.06)_1px,transparent_0)] bg-[length:20px_20px] pointer-events-none" aria-hidden="true" />
 
-              <div className="relative z-10 space-y-6">
+              {/* Music visualizer bars */}
+              <div className="flex items-end justify-center gap-1 mb-6" aria-hidden="true">
+                {Array.from({ length: 24 }).map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="w-1 bg-brand-green-lime/30 rounded-full"
+                    initial={{ height: 4 }}
+                    animate={{ height: [4, 8 + Math.abs(Math.sin(i * 0.8)) * 32, 4] }}
+                    transition={{ duration: 1.5 + Math.random(), repeat: Infinity, delay: i * 0.05 }}
+                  />
+                ))}
+              </div>
+
+              <div className="relative z-10 space-y-5">
                 <div className="text-[10px] font-bold text-brand-green-lime uppercase tracking-[0.3em]">Arquivo Cultural</div>
 
-                <div className="grid grid-cols-2 gap-4">
-                  {['DJ', 'Produção', 'Hip-Hop', 'Comunidade'].map((item) => (
-                    <div key={item} className="p-4 bg-black/30 border border-white/10 rounded-2xl">
-                      <div className="text-white font-display font-bold uppercase text-sm mb-1">{item}</div>
-                      <div className="text-[10px] text-white/40 uppercase tracking-widest">eixo de atuação</div>
-                    </div>
+                <div className="grid grid-cols-2 gap-3">
+                  {['DJ', 'Produção', 'Hip-Hop', 'Comunidade'].map((item, idx) => (
+                    <motion.div
+                      key={item}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 1.8 + idx * 0.1 }}
+                      className="p-4 bg-black/30 border border-white/10 rounded-xl hover:border-brand-green-lime/30 transition-colors"
+                    >
+                      <div className="text-white font-display font-bold uppercase text-sm">{item}</div>
+                      <div className="text-[9px] text-white/40 uppercase tracking-widest mt-1">eixo de atuação</div>
+                    </motion.div>
                   ))}
                 </div>
 
-                <div className="flex items-center gap-3 text-white/40">
-                  <div className="flex items-end gap-0.5" aria-hidden="true">
+                <div className="flex items-center gap-3 text-white/40 pt-2">
+                  <div className="flex items-end gap-[2px]" aria-hidden="true">
                     {[6, 12, 8, 16, 10, 18, 8, 14].map((h, i) => (
-                      <div key={i} className="w-1 bg-brand-green-vibrant rounded-full" style={{ height: `${h}px` }} />
+                      <motion.div
+                        key={i}
+                        className="w-1 bg-brand-green-vibrant rounded-full"
+                        initial={{ height: 2 }}
+                        animate={{ height: h }}
+                        transition={{ delay: 2.2 + i * 0.05, duration: 0.3 }}
+                      />
                     ))}
                   </div>
-                  <span className="text-[10px] uppercase tracking-widest">identidade sonora do DF</span>
+                  <span className="text-[10px] uppercase tracking-widest font-medium">identidade sonora do DF</span>
                 </div>
               </div>
             </div>
@@ -117,11 +218,17 @@ export function CultureHero() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="relative z-10 pb-8 flex justify-center">
-        <a href="#trajetoria" aria-label="Rolar para trajetória" className="text-white/40 hover:text-brand-green-lime transition-colors animate-bounce">
-          <ChevronDown className="w-6 h-6" />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 1 }}
+        className="relative z-10 pb-8 flex justify-center"
+      >
+        <a href="#trajetoria" aria-label="Rolar para trajetória" className="flex flex-col items-center gap-2 text-white/30 hover:text-brand-green-lime transition-colors group">
+          <span className="text-[10px] uppercase tracking-[0.3em] font-bold">Explorar</span>
+          <ChevronDown className="w-5 h-5 animate-bounce" />
         </a>
-      </div>
+      </motion.div>
     </section>
   );
 }

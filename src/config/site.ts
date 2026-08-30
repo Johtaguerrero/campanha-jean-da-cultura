@@ -17,5 +17,5 @@ export const CANDIDATE = {
 
 export const SOCIAL = {
   instagram: "https://instagram.com/jeandacultura",
-  facebook: "https://facebook.com/jeancarlossousaa",
+  facebook: "https://www.facebook.com/Recantodasemas",
 };

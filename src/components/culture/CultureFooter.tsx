@@ -19,7 +19,7 @@ export function CultureFooter() {
               <a href="https://instagram.com/jeandacultura" target="_blank" rel="noopener" className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-white shadow-sm hover:bg-brand-green-lime hover:text-brand-green-deep transition-all border border-white/10">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="https://facebook.com/jeancarlossousaa" target="_blank" rel="noopener" className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-white shadow-sm hover:bg-brand-green-lime hover:text-brand-green-deep transition-all border border-white/10">
+              <a href="https://www.facebook.com/Recantodasemas" target="_blank" rel="noopener" className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-white shadow-sm hover:bg-brand-green-lime hover:text-brand-green-deep transition-all border border-white/10">
                 <Facebook className="w-5 h-5" />
               </a>
             </div>
@@ -45,7 +45,7 @@ export function CultureFooter() {
                 <a href="https://instagram.com/jeandacultura" target="_blank" rel="noopener" className="text-white/70 hover:text-brand-green-lime transition-colors">Instagram</a>
               </li>
               <li>
-                <a href="https://facebook.com/jeancarlossousaa" target="_blank" rel="noopener" className="text-white/70 hover:text-brand-green-lime transition-colors">Facebook</a>
+                <a href="https://www.facebook.com/Recantodasemas" target="_blank" rel="noopener" className="text-white/70 hover:text-brand-green-lime transition-colors">Facebook</a>
               </li>
             </ul>
           </div>
