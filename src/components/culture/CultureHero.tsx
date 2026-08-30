@@ -1,20 +1,31 @@
-import { motion } from 'motion/react';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'motion/react';
 import { MessageCircle, ArrowRight, ChevronDown } from 'lucide-react';
 import { WHATSAPP_CULTURA_URL } from '../../config/contact';
 
 export function CultureHero() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end start'],
+  });
+
+  const imageOpacity = useTransform(scrollYProgress, [0, 0.6], [0.35, 0]);
+  const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
+  const imageY = useTransform(scrollYProgress, [0, 1], [0, -60]);
   return (
-    <section id="inicio" className="relative min-h-[100svh] flex flex-col overflow-hidden bg-brand-black">
-      {/* Full-screen Jean background image - faded */}
+    <section ref={sectionRef} id="inicio" className="relative min-h-[100svh] flex flex-col overflow-hidden bg-brand-black">
+      {/* Full-screen Jean background image - fades on scroll */}
       <div className="absolute inset-0 z-0">
-        <img
+        <motion.img
           src="/jean.jpg"
           alt=""
           aria-hidden="true"
-          className="w-full h-full object-cover object-top opacity-20 md:opacity-15 scale-105"
+          className="w-full h-full object-cover object-top origin-top"
+          style={{ opacity: imageOpacity, scale: imageScale, y: imageY }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-black via-brand-black/70 to-brand-black" />
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-black/90 via-transparent to-brand-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-black/40 via-brand-black/50 to-brand-black" />
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-black/80 via-transparent to-brand-black/60" />
       </div>
 
       {/* Animated waveform background - music visual */}
