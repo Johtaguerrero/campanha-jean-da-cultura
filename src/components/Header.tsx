@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, MessageCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { Link } from 'react-router-dom';
+import { WHATSAPP_DEFAULT_URL } from '../config/contact';
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -21,6 +23,8 @@ export function Header() {
     { name: 'Propostas', href: '#propostas' },
     { name: 'Transparência', href: '#transparencia' },
   ];
+
+  const cultureLink = { name: 'Cultura', href: '/cultura', isRoute: true };
 
   return (
     <nav 
@@ -48,12 +52,19 @@ export function Header() {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-green-lime transition-all group-hover:w-full" />
             </a>
           ))}
+          <Link 
+            to={cultureLink.href}
+            className="text-[10px] font-black uppercase tracking-[0.2em] transition-all text-brand-green-lime hover:text-white relative group"
+          >
+            {cultureLink.name}
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-green-lime transition-all group-hover:w-full" />
+          </Link>
           <a 
-            href="https://wa.me/5561995845093?text=Ol%C3%A1%2C%20Jean%20da%20Cultura%21%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20fazer%20uma%20pergunta%20sobre%20sua%20atua%C3%A7%C3%A3o%20e%20suas%20ideias%20para%20o%20Distrito%20Federal.%20Podemos%20conversar%3F" 
+            href={WHATSAPP_DEFAULT_URL} 
             className="bg-brand-green-lime text-brand-green-deep px-8 py-3 rounded-xl font-black text-[10px] uppercase tracking-[0.2em] hover:scale-105 transition-all shadow-[0_10px_20px_rgba(118,255,3,0.2)] flex items-center gap-2"
           >
             <MessageCircle className="w-4 h-4 fill-current" />
-            Grupo Oficial
+            WhatsApp Oficial
           </a>
         </div>
 
@@ -89,16 +100,29 @@ export function Header() {
                   {link.name}
                 </motion.a>
               ))}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: navLinks.length * 0.1 }}
+              >
+                <Link 
+                  to={cultureLink.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="text-4xl font-display font-black uppercase text-brand-green-lime hover:text-white transition-colors"
+                >
+                  {cultureLink.name}
+                </Link>
+              </motion.div>
             </div>
             <motion.a 
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.5 }}
-              href="https://wa.me/5561995845093?text=Ol%C3%A1%2C%20Jean%20da%20Cultura%21%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20fazer%20uma%20pergunta%20sobre%20sua%20atua%C3%A7%C3%A3o%20e%20suas%20ideias%20para%20o%20Distrito%20Federal.%20Podemos%20conversar%3F" 
+              href={WHATSAPP_DEFAULT_URL} 
               className="bg-brand-green-lime text-brand-green-deep px-8 py-6 rounded-2xl font-black text-sm uppercase tracking-[0.2em] text-center flex items-center justify-center gap-3 shadow-xl"
             >
               <MessageCircle className="w-6 h-6 fill-current" />
-              Entrar no Grupo Oficial
+              WhatsApp Oficial
             </motion.a>
             <div className="mt-auto text-center border-t border-white/5 pt-8">
               <p className="text-[10px] font-bold text-white/20 uppercase tracking-[0.5em]">Brasília • Cultura • Comunidade</p>
